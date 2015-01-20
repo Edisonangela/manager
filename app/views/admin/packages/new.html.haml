@@ -1,0 +1,13 @@
+.row
+  .col-md-8
+    %section.panel.panel-default
+      %header.panel-heading.font-bold
+        = t('.header')
+      .panel-body
+        = render 'form', url: admin_packages_path
+
+  .col-md-4
+    %section.panel.panel-default.doc-buttons.b-light
+      .need_padding
+        = link_to collection_path, rel: 'tooltip', title: '返回', class: 'btn btn-lg btn-icon btn-primary' do
+          %i.fa.fa-backward 

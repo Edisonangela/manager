@@ -1,0 +1,39 @@
+.row
+  .col-md-8
+    %section.panel.panel-default
+      %header.panel-heading.font-bold
+        = t('.header')
+      %table.table.table-striped.m-b-none.text-sm.table-bordered
+        %thead
+          %tr
+            %th= Package.human_attribute_name(:id)
+            %th= Package.human_attribute_name(:name)
+            %th 
+        %tbody
+          - collection.each do |resource|
+            %tr
+              %td= resource.id
+              %td= link_to resource.name, resource_path(resource)
+              %td
+                .btn-group
+                  %button.btn.btn-default.btn-sm.dropdown-toggle{"data-toggle" => "dropdown"}
+                    %i.fa.fa-pencil
+                  %ul.dropdown-menu
+                    %li
+                      = link_to resource_path(resource) do
+                        %i.fa.fa-search
+                        详情
+                    %li
+                      = link_to edit_resource_path(resource) do
+                        %i.fa.fa-edit
+                        编辑
+                    %li
+                      = link_to resource_path(resource), method: 'delete', data: { confirm: '确认删除吗?' } do
+                        %i.fa.fa-trash-o
+                        删除
+
+  .col-md-4
+    %section.panel.panel-default.doc-buttons.b-light
+      .need_padding
+        = link_to new_resource_path, rel: 'tooltip', title: '创建套餐', class: 'btn btn-lg btn-icon btn-primary' do
+          %i.fa.fa-plus 

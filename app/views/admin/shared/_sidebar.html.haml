@@ -1,0 +1,52 @@
+%aside#nav.bg-dark.lter.aside-md.hidden-print
+  %section.vbox
+    %section.w-f.scrollable
+      %nav.nav-primary.hidden-xs
+        %ul.nav
+          = main_nav :dashboard do
+            = link_to admin_root_path do
+              %i.fa.fa-dashboard.icon
+              首页
+
+          = main_nav :weixin_menus do
+            = link_to admin_weixin_menus_path do
+              %i.fa.fa-columns.icon
+              公众账号管理
+
+          = main_nav :users do
+            = link_to admin_users_path do
+              %i.fa.fa-users.icon
+              用户管理
+
+          = main_nav :shops do
+            = link_to admin_shops_path do
+              %i.fa.fa-flask.icon
+              门店管理
+          
+          = main_nav :categories do
+            = link_to admin_categories_path do
+              %i.fa.fa-file-text.icon
+              菜品分类管理
+          
+          = main_nav :items do
+            = link_to admin_items_path do
+              %i.fa.fa-pencil.icon
+              菜品管理
+
+          = main_nav :packages do
+            = link_to admin_packages_path do
+              %i.fa.fa-flask.icon 
+              套餐管理
+              
+          = main_nav :orders do
+            = link_to admin_orders_path do
+              %i.fa.fa-pencil.icon
+              订单管理
+          = main_nav :events do
+            = link_to admin_events_path do
+              %i.fa.fa-pencil.icon 
+              活动管理
+          = main_nav :packages do
+            = link_to admin_packages_path do
+              %i.fa.fa-pencil.icon 
+              套餐管理

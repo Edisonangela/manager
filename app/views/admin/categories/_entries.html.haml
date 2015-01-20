@@ -1,0 +1,14 @@
+%section.panel.panel-default
+  %header.panel-heading.bg-light 菜品分类
+  .panel-body
+
+    %ul.list-group.gutter.list-group-lg.list-group-sp.sortable{ data: { :'update-url' => sort_admin_categories_path } }
+      - collection.each_with_index do |resource, index|
+        %li.list-group-item{ draggable: true, :'data-id' => resource.id }
+          %span.pull-right
+            = link_to resource_path(resource), method: :delete, data: { confirm: '确定要删除吗?' } do
+              %i.fa.fa-times.icon-muted.fa-fw
+          %span.pull-left.media-xs
+            %i.fa.fa-sort.text-muted.fa.m-r-sm
+          .clear
+            = link_to resource.name, 'javascript:void(0)', class: 'editable editable-click', data: { type: 'text', pk: 1, title: '修改分类名称', :'original-title' => '', url: admin_category_rename_path(resource) }

@@ -1,0 +1,37 @@
+.select2{
+  display: block !important;
+}
+.select2-container{
+  height: auto;
+  padding: 0;
+}
+
+.need_padding{
+  padding: 15px;
+  background: white;
+  a {
+    margin: 0 2px;
+  }
+}
+.select_width{
+  width: 92%;
+}
+
+.weixin-form .select {
+  display: block;
+}
+
+.nav-primary ul.nav > li > a {
+  font-weight: normal;
+}
+
+form.search {
+  .form-group { margin-bottom: 0; }
+}
+
+.form-group.file {
+  .form-control.filestyle { display: none !important; }
+}
+.no_float{
+  float: none !important;
+}

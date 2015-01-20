@@ -1,0 +1,22 @@
+= render 'header'
+
+.row
+  .col-md-12
+    - 5.times do
+      .media
+        = link_to new_order_path, class: 'pull-left' do
+          %img{ class: 'media-object', data: { src: 'holder.js/150x100' } }
+        .media-body
+          %h4.media-heading 【蜀面】南京东路店
+          .price
+            黄浦区南京东路
+          %ul
+            %li
+              %i.glyphicon.glyphicon-heart
+              3人喜欢
+            %li
+              %i.glyphicon.glyphicon-comment
+              有6个评论
+
+          .actions
+            = link_to '详情', '#', class: 'btn btn-info'

@@ -1,0 +1,11 @@
+zh-CN:
+  admin:
+    shared:
+      crumbs:
+        categories: 菜品分类
+        items: 菜品
+        users: 用户
+        orders: 订单
+        events: 活动
+        shops: 门店
+        packages: 套餐

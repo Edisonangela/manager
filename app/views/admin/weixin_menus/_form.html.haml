@@ -1,0 +1,18 @@
+= simple_nested_form_for resource, url: url, validate: true, defaults: {input_html: {class: 'form-control'}}, html: {class: 'form-horizontal weixin-form'} do |f|
+  %fieldset
+    %legend 菜单信息
+    = f.input :sequence
+    = f.input :name
+    = f.input :menu_type, collection: MenuType.type_options
+    = f.input :key, collection: MenuType::KEYS.invert
+    = f.input :url
+
+
+  %fieldset
+    %legend 子菜单
+    = f.simple_fields_for :weixin_sub_menus
+
+    .clearfix.mb-s= f.link_to_add '添加子菜单按钮', :weixin_sub_menus, class: 'btn btn-default'
+
+  .clearfix
+    = f.button :submit, '提交', class: 'btn btn-success pull-right'

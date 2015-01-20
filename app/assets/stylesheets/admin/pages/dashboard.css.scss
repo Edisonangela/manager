@@ -1,0 +1,21 @@
+section{
+  &.custom_panel{
+    background-color: inherit;
+    box-shadow: none !important;
+  }
+  &.no-bg {
+    background-color: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
+.breadcrumb_height {
+  height: 0px;
+}
+.panel_background {
+  background-color: #f5f5f5;
+}
+.set_top{
+  position: absolute;
+  top: 0px !important;
+}

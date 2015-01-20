@@ -1,0 +1,11 @@
+zh-CN:
+  activerecord:
+    symbolizes:
+      user:
+        gender:
+          male: 男
+          female: 女
+      item:
+        is_recommended:
+          true: 推荐
+          false: 不推荐

@@ -1,0 +1,12 @@
+- namespace = current_admin_user && current_admin_user.is_admin? ? 'admin' : 'platform'
+%ul.breadcrumb.no-border.no-radius.b-b.b-light.pull-in
+  %li
+    = link_to send("#{namespace}_root_path") do
+      %i.fa.fa-home
+      控制面板
+      
+  - if @main_nav != :dashboard
+    - if @main_nav
+      %li= link_to t(".#{@main_nav}"), 'javascript:void(0);'
+    - if @sec_nav
+      %li= link_to t(".#{@sec_nav}"), send("#{namespace}_#{@sec_nav}_path")

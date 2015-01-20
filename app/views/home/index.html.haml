@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    - 5.times do
+      .media
+        = link_to '#', class: 'pull-left' do
+          %img{ class: 'media-object', data: { src: 'holder.js/150x100' } }
+        .media-body
+          %h4.media-heading 【极力推荐】野山椒炒饭
+          .price
+            %span.current ￥36.00
+            %span.base ￥40.00
+          %ul
+            %li 3人喜欢
+            %li 有6个评论
+
+          .actions
+            %input{ type: 'checkbox', class: 'flat-checkbox' }
+
+
+- content_for :js do
+  :coffeescript
+    $ ->
+      $('.flat-checkbox').iCheck
+        checkboxClass: 'icheckbox_flat'
+        radioClass: 'iradio_flat'

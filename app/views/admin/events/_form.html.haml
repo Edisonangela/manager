@@ -1,0 +1,53 @@
+.row
+  .col-md-10
+    %section.panel.panel-default
+      %header.panel-heading 活动
+      .panel-body
+        = simple_form_for resource, url: url, html: { class: 'form-horizontal row-border', multipart: true } do |f|
+          = f.input :title, autofocus: true
+          -# = f.input :shop_id, as: :select, collection: Shop.all, prompt: true, input_html: { class: 'select2-option' }, wrapper_class: 'select_width'
+
+          .form-group.upload{ data: { target: 'event_banner' } }
+            %label.col-md-2.control-label 菜品图片
+            .col-md-10.clearfix
+              .img-holder
+                = render_event_banner f.object
+              .action
+                = link_to '选择图片', '#', id: 'btn-pupload', class: 'btn btn-primary'
+                %p
+                  %i.fa.fa-lightbulb-o
+                  格式须是jpg、png、gif的一种，
+                  %br/
+                  大小尽量不要超过2M.
+              = f.input :banner, as: :hidden, input_html: { class: 'target_input' }
+          
+          = f.input :start_at, as: :string, input_html: { class: 'datepicker-input', 'data-date-format' => 'yyyy-mm-dd', value: f.object.start_at ? f.object.start_at.to_date : '' }
+          = f.input :end_at, as: :string, input_html: { class: 'datepicker-input', 'data-date-format' => 'yyyy-mm-dd', value: f.object.start_at ? f.object.start_at.to_date : '' }
+
+          = f.input :body, as: :text, input_html: { class: 'reditor' }
+
+          .form-actions
+            = f.button :submit, class: 'btn btn-info btn-large pull-right'
+
+
+  .col-md-2
+    %section.panel.panel-default.doc-buttons.b-light
+      .need_padding
+        = link_to collection_path, rel: 'tooltip', title: '返回', class: 'btn btn-primary' do
+          %i.fa.fa-arrow-left
+          返回列表
+
+  - content_for :js do
+    :coffee
+      $ ->
+        $(document).on 'click', '.btn-add-photo', (e) ->
+          e.preventDefault()
+          $('input#topic_photo').trigger 'click'
+
+        redactor = new RedactorInitializer
+        redactor.init_by_default()
+
+      # uploader
+      new MainUploader
+        url: '#{photos_path}.js'
+        button: 'btn-pupload'

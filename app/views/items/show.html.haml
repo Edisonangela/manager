@@ -1,0 +1,90 @@
+.order
+  .album
+    %a{:href => "#"}
+      = image_tag resource.banner_url, class: 'w100'
+    %a{:href => "#"}
+      .album-tip 点击查看相册
+    .album-info.clearfix
+      ¥
+      = succeed "/\u{4f8b}" do
+        %strong= resource.price
+      %a.right{:href => "#"}
+        %i.fa.fa-heart>
+        喜欢
+      %span.right 4999 人点过
+  %form{:action => ""}
+    .menu-list
+      .order-item.dt.form-group
+        .dtc.w100.pl10.recommend
+          %h3= resource.name
+          %p.gray6 美味2选1，双层口感，享受绵密浓郁口感。
+      .order-item.dt.form-group.gray6
+        .dtc.w70.pl10.score-star
+          %i.fa.fa-star.active
+          %i.fa.fa-star.active
+          %i.fa.fa-star.active
+          %i.fa.fa-star.active
+          %i.fa.fa-star
+          %span 4.5分
+        .dtc.w30.tr.pr10
+          %a.gray6{:href => "#"} #{ resource.comments_count } 人评分>
+    .menu-list
+      .order-item.dt.form-group
+        .dtc.w100.pl10
+          %span.menu-icon>
+            %i.fa.fa-cutlery
+          套餐
+      .order-item.dt.form-group.gray6
+        .dtc.w33.pl10
+          皮蛋瘦肉粥
+        .dtc.w33.tc
+          15元/例
+        .dtc.w33.tr.pr10
+          15
+      .order-item.dt.form-group.gray6
+        .dtc.w33.pl10
+          梅干菜扣肉
+        .dtc.w33.tc
+          15元/例
+        .dtc.w33.tr.pr10
+          15
+    .menu-list
+      .order-item.dt.form-group
+        .dtc.w100.pl10
+          %span.menu-icon>
+            %i.fa.fa-comments
+          评价
+      .comment
+        .comment-head.clearfix.gray3
+          king于2005-02-23
+          .score-star.right
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star
+            %span 4.5分
+        %p.gray6 服务规范，但是刺身、肉类上菜慢了点，性价比很高的，东西味道不错，对得起这个价钱。有机会还是再会来吃的。
+      .comment
+        .comment-head.clearfix.gray3
+          king于2005-02-23
+          .score-star.right
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star
+            %span 4.5分
+        %p.gray6 服务规范，但是刺身、肉类上菜慢了点，性价比很高的，东西味道不错，对得起这个价钱。有机会还是再会来吃的。
+      .comment-text.form-group
+        %textarea.box_sizing{:id => "", :name => ""}
+        .comment-push.clearfix
+          .comment-star.left
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star.active
+            %i.fa.fa-star
+          %button.btn.btn-default.right 发布
+  .back-home
+    %a.tc.db{:href => items_path} 返回点菜

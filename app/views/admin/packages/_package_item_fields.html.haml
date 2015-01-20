@@ -1,0 +1,3 @@
+= f.input :item_id, as: :select, collection: Item.all, prompt: true, input_html: { class: 'select2-option' }, wrapper_class: 'select_width nested_form_select'
+= f.input :position
+= f.link_to_remove t('.delete'), class: 'btn btn-danger btn-mini'

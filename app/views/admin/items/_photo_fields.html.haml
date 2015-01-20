@@ -1,0 +1,13 @@
+.form-group.upload{ data: { target: 'item_photo' } }
+  %label.col-md-2.control-label 菜品图片
+  .col-md-10.clearfix
+    .img-holder
+      = render_item_photo f.object
+    .action
+      = link_to '选择图片', '#', id: 'btn-pupload', class: 'btn btn-primary'
+      %p
+        %i.fa.fa-lightbulb-o
+        店铺logo的格式须是jpg、png、gif的一种，
+        %br/
+        大小尽量不要超过2M.
+    = f.input :data, as: :hidden, input_html: { class: 'target_input' }

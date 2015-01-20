@@ -1,0 +1,27 @@
+%ul.list-group.gutter.list-group-lg.list-group-sp.sortable
+  - collection.each do |resource|
+    %li.list-group-item{ draggable: true }
+      %span.pull-right
+        - if resource.pending?
+          = link_to resource_path(resource, event: :process), method: :put do
+            %i.fa.fa-pencil.icon-muted.fa-fw.m-r-xs
+            正在制作
+        - if resource.processing?
+          = link_to resource_path(resource, event: :deliver), method: :put do
+            %i.fa.fa-pencil.icon-muted.fa-fw.m-r-xs
+            正在派送
+        - if resource.delivering?
+          = link_to resource_path(resource, event: :confirm), method: :put do
+            %i.fa.fa-pencil.icon-muted.fa-fw.m-r-xs
+            成功派送
+
+      %span.pull-left.media-sm
+        %i.fa.fa-sort.text-muted.fa.m-r-sm
+        = time_ago_in_words resource.created_at
+      .clear
+        = "联系人：#{resource.contact_name} 联系电话：#{resource.contact_phone}"
+        %small
+          - resource.order_items.each do |item|
+            = "#{item.item.name} x #{item.number}"
+        %span.price
+          = resource.amount

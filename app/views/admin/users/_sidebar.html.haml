@@ -1,0 +1,12 @@
+%section.panel.panel-default
+  %header.panel-heading 最新加入会员
+  %ul.list-group.alt
+    - @users_recently.each do |user|
+      %li.list-group-item
+        .media
+          .pull-right.text-success.m-t-sm
+            %i.fa.fa-circle
+          .media-body
+            %div
+              = link_to user.name, '#'
+            %small.text-muted= time_ago_in_words(user.created_at)

@@ -1,0 +1,43 @@
+.book-dinner
+  = simple_form_for 'order', url: new_order_path, html: { method: :get } do |f|
+    .dinner-head.clearfix
+      %a.classify.gray{:href => 'javascript:void(0);'}
+        %i.fa.fa-cutlery
+        全部分类
+        %i.fa.fa-caret-down
+        %i.fa.fa-caret-up.hide
+      %a.store.gray{:href => "#"}
+        %i.fa.fa-map-marker>
+        全部门店
+      %a.right.buy-car{:href => 'javascript:void(0);'}
+        %i.fa.fa-shopping-cart
+        %span.foods-num 0
+      %ul.classify-list.hide
+        - @categories.each do |cat|
+          %li
+            %a{:href => "#"}
+              = cat.name
+              %span= cat.items_count
+    .dinner-list
+      - collection.each do |resource|
+        .dinner-item.dt
+          .dtc.w40.tc
+            = link_to resource_path(resource) do
+              = image_tag resource.cover_url
+          .dtc.w50
+            %p.name.font14= resource.name
+            %p.price.font14
+              ¥
+              %strong= resource.price
+              元/例
+            %p.font12.gray6.praise
+              %span
+                %i.fa.fa-th-list
+                4999人点过
+              %i.fa.fa-heart
+              43人喜欢
+          .dtc.w10.tc
+            %a.check-model-default
+              %i.fa.fa-check
+
+            %input{ type: 'checkbox', style: 'display: none;', value: resource.id, name: 'item_ids[]' }

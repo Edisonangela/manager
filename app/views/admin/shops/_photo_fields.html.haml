@@ -1,0 +1,15 @@
+.form-group.upload{ data: { target: 'shop_photo' } }
+  %label.col-md-2.control-label 菜品图片
+  .col-md-10.clearfix
+    .img-holder
+      = render_shop_photo f.object
+    .action
+      = link_to '选择图片', '#', id: 'btn-pupload', class: 'btn btn-primary'
+      %p
+        %i.fa.fa-lightbulb-o
+        格式须是jpg、png、gif的一种，
+        %br/
+        大小尽量不要超过2M.
+    = f.input :data, as: :hidden, input_html: { class: 'target_input' }
+
+= f.link_to_remove '删除', class: 'btn btn-danger btn-mini'

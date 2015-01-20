@@ -1,0 +1,31 @@
+= simple_form_for resource, url: url, html: { class: 'form-horizontal company-form' } do |f|
+
+  = f.input :name
+  = f.input :points
+
+  .form-group
+    %label.col-md-2.control-label
+      = User.human_attribute_name(:gender)
+    .col-md-10      
+      = f.collection_radio_buttons :gender, User.get_gender_values, :last, :first do |b|
+        .radio
+          = b.label(class: 'radio-custom') do
+            = b.radio_button
+            %i.fa.fa-circle-o
+            = b.text
+  = f.input :mobile_phone
+  = f.input :bio, as: :text
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary pull-right'
+
+
+- content_for :js do
+  :coffee
+    $ ->
+      $(document).on 'click', '.btn-add-photo', (e) ->
+        e.preventDefault()
+        $('input#topic_photo').trigger 'click'
+
+      redactor = new RedactorInitializer
+      redactor.init_by_default()

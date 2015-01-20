@@ -1,0 +1,35 @@
+%header.navbar.navbar-static-top.bs-docs-nav{ role: 'banner' }
+  .container
+    .navbar-header.items
+      %ul
+        %li
+          %a.navbar-toggle.btn-block{ data: { target: '.category-navbar-collapse', toggle: 'collapse' } }
+            全部分类
+            %i.glyphicon.glyphicon-chevron-down
+        %li.second
+          %a.navbar-toggle.btn-block{ data: { target: '.sort-navbar-collapse', toggle: 'collapse' } }
+            全部排序
+            %i.glyphicon.glyphicon-chevron-down
+        - if params[:controller] == 'items'
+          %li.last
+            = link_to new_order_path do
+              %i.glyphicon.glyphicon-shopping-cart
+              %span 3
+
+    %nav.collapse.navbar-collapse.category-navbar-collapse{ role: 'navigation' }
+      %ul.nav.navbar-nav
+        %li= link_to '全部分类', '#'
+        %li
+          = link_to '#' do
+            菜品分类一
+            %span.pull-right 10
+        %li
+          = link_to '#' do
+            菜品分类二
+            %span.pull-right 10
+    %nav.collapse.navbar-collapse.sort-navbar-collapse{ role: 'navigation' }
+      %ul.nav.navbar-nav
+        %li.active= link_to '默认排序', '#'
+        %li= link_to '人气最高', '#'
+        %li= link_to '价格从低到高', '#'
+        %li= link_to '价格从高到低', '#'

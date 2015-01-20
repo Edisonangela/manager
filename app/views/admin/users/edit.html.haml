@@ -1,0 +1,14 @@
+.row
+  .col-md-8
+    %section.panel.panel-default
+      %header.panel-heading 用户
+
+      .panel-body
+        = render 'form', url: admin_user_path(resource)
+
+  .col-md-4
+    %section.panel.panel-default.doc-buttons.b-light
+      .need_padding
+        = link_to collection_path, rel: 'tooltip', title: '返回', class: 'btn btn-primary' do
+          %i.fa.fa-arrow-left
+          返回列表 

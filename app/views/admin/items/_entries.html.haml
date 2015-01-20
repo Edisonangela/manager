@@ -1,0 +1,42 @@
+%section.panel.panel-default
+  %header.panel-heading 菜品
+  - if collection.any?
+    %table.table.table-striped.m-b-none.text-sm.table-bordered
+      %thead
+        %tr
+          %th 封面
+          %th= Item.human_attribute_name(:id)
+          %th= Item.human_attribute_name(:name)
+          %th= Item.human_attribute_name(:category_id)
+          %th= Item.human_attribute_name(:price)
+          %th= Item.human_attribute_name(:comments_count)
+          %th 
+      %tbody
+        - collection.each do |resource|
+          %tr
+            %td= image_tag resource.cover_url
+            %td= resource.id
+            %td= link_to resource.name, resource_path(resource)
+            %td= resource.category.name
+            %td= resource.price
+            %td= resource.comments_count
+            %td
+              .btn-group
+                %button.btn.btn-default.btn-sm.dropdown-toggle{"data-toggle" => "dropdown"}
+                  %i.fa.fa-pencil
+                %ul.dropdown-menu
+                  %li
+                    = link_to resource_path(resource) do
+                      %i.fa.fa-search
+                      详情
+                  %li
+                    = link_to edit_resource_path(resource) do
+                      %i.fa.fa-edit
+                      编辑
+                  %li
+                    = link_to resource_path(resource), method: 'delete', data: { confirm: '确认删除吗?' } do
+                      %i.fa.fa-trash-o
+                      删除
+  - else
+    .panel-body
+      %p 暂时还没有菜品数据，请点击右侧的添加按钮进行菜品的添加。

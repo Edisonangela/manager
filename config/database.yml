@@ -1,0 +1,18 @@
+common: &common
+  adapter: postgresql
+  encoding: utf8
+  username: edison
+  password:
+  host: localhost
+
+development:
+  <<: *common
+  database: shumian_development
+
+test: &test
+  <<: *common
+  database: shumian_test
+
+production:
+  <<: *common
+  database: shumian_production

@@ -1,0 +1,37 @@
+%section.panel.panel-default
+  %header.panel-heading 用户
+  
+  %table.table.table-striped.m-b-none.text-sm.table-bordered
+    %thead
+      %tr
+        %th= User.human_attribute_name(:email)
+        %th= User.human_attribute_name(:name)
+        %th= User.human_attribute_name(:points)
+        %th= User.human_attribute_name(:gender) 
+        %th= User.human_attribute_name(:mobile_phone)
+        %th
+    %tbody
+      - collection.each do |resource|
+        %tr
+          %td= resource.email
+          %td= resource.name
+          %td= resource.points
+          %td= resource.gender
+          %td= resource.mobile_phone
+          %td
+            .btn-group
+              %button.btn.btn-default.btn-sm.dropdown-toggle{"data-toggle" => "dropdown"}
+                %i.fa.fa-pencil
+              %ul.dropdown-menu
+                %li
+                  = link_to resource_path(resource) do
+                    %i.fa.fa-search
+                    详情
+                %li
+                  = link_to edit_resource_path(resource) do
+                    %i.fa.fa-edit
+                    编辑
+                %li
+                  = link_to resource_path(resource), method: 'delete', data: { confirm: '确认删除吗?' } do
+                    %i.fa.fa-trash-o
+                    删除

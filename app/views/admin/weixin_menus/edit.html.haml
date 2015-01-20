@@ -1,0 +1,10 @@
+.row
+  .col-md-12
+    %h2.page-title Edit Menu
+    .page-actions
+      = link_to :back, class: 'btn' do
+        %i.icon-caret-left
+        Back
+    %section.widget
+      .tab-content
+        = render 'form', url: resource_path(resource)

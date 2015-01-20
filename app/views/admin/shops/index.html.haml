@@ -1,0 +1,16 @@
+.row
+  .col-md-9
+    = render 'entries'
+  .col-md-3
+    %section.panel.panel-default
+      .panel-body
+        = link_to new_resource_path, rel: 'tooltip', title: '创建门店', class: 'btn btn-primary' do
+          %i.fa.fa-plus
+          创建门店
+          
+    %section.panel.panel-default
+      %header.panel-heading.font-bold
+        %i.fa.fa-lightbulb-o
+        帮助中心
+      .panel-body
+        %p 这里添加一些帮助性的文字

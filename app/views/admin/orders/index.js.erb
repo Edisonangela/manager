@@ -1,0 +1,3 @@
+<% if params[:state] %>
+  $("#orders_list").html('<%= j render("list", collection: collection.send(params[:state])) %>');
+<% end %>

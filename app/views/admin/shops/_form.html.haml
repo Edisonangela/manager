@@ -1,0 +1,67 @@
+- resource.photos.build if resource.new_record?
+
+.row
+  .col-md-8
+    %section.panel.panel-default
+      %header.panel-heading 门店
+      .panel-body
+        = simple_nested_form_for resource, url: url, html: { class: 'form-horizontal company-form' } do |f|
+
+          = f.input :name, required: true, autofoces: true
+
+          .form-group.upload{ data: { target: 'shop_logo' } }
+            %label.col-md-2.control-label 门店logo
+            .col-md-10.clearfix
+              .img-holder
+                = render_shop_logo f.object
+              .action
+                = link_to '选择图片', '#', id: 'btn-pupload', class: 'btn btn-primary'
+                %p
+                  %i.fa.fa-lightbulb-o
+                  格式须是jpg、png、gif的一种，
+                  %br/
+                  大小尽量不要超过2M.
+              = f.input :logo, as: :hidden, input_html: { class: 'target_input' }
+
+          = f.input :description, as: :text,
+                                  input_html: { rows: 5 }
+          = f.input :location
+
+          -# %fieldset
+          -#   %legend 图片
+          -#   = f.simple_fields_for :photos
+          -#   = f.link_to_add '添加', :photos, class: 'btn btn-mini btn-primary'
+          .form-actions
+            = f.button :submit, class: 'btn btn-primary pull-right'
+
+  .col-md-4
+    %section.panel.panel-default.doc-buttons.b-light
+      .need_padding
+        = link_to collection_path, rel: 'tooltip', title: '返回', class: 'btn btn-primary' do
+          %i.fa.fa-arrow-left
+          返回列表
+
+- content_for :js do
+  :coffee
+    $ ->
+      # uploader
+      new MainUploader
+        url: '#{photos_path}.js'
+        button: 'btn-pupload'
+
+      new MainUploader
+        url: '#{photos_path}.js'
+        button: 'btn-pupload2'
+        
+      # init uploader for nested form
+      $(document).on 'nested:fieldAdded', (event) ->
+        
+        field = event.field
+        
+        dateField = field.find('.date')
+        count = field.parents('#new_product').find('.fields').size()
+        field.find('.btn.btn-default').attr 'id', 'btn-pupload' + count
+
+        new MainUploader
+          url: '#{photos_path}.js'
+          button: 'btn-pupload' + count

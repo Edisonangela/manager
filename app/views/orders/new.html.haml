@@ -1,0 +1,57 @@
+.order
+  .order-head.clearfix
+    提交订单
+    %span.right 共消费：23元
+  .menu-list
+    .order-item.dt
+      .dtc.w50.pl10
+        %span.menu-icon>
+          %i.fa.fa-file-text-o
+        我的菜单
+      .dtc.w50.tc
+        %button.btn.btn-default.fix-num +加菜
+        %button.btn.btn-normal.fix-num 清空
+    .order-item.dt
+      .dtc.w50.pl10
+        皮蛋瘦肉粥
+        %br
+          %span.red 15元/例
+      .dtc.w50.tc
+        %a.subtract{:href => "#"}
+          %i.fa.fa-minus
+        %input.btn.input-default{:id => "", :name => "", :type => "text", value: 1}
+        %a.add{:href => "#"}
+          %i.fa.fa-plus
+    .order-item.dt
+      .dtc.w50.pl10
+        梅干菜扣肉
+        %br
+          %span.red 25元/例
+      .dtc.w50.tc
+        %a.subtract{:href => "#"}
+          %i.fa.fa-minus
+        %input.btn.input-default{:id => "", :name => "", :type => "text", value: 1}
+        %a.add{:href => "#"}
+          %i.fa.fa-plus
+  .menu-list
+    .order-item.dt
+      .dtc.w50.pl10
+        %span.menu-icon>
+          %i.fa.fa-file-text-o
+        收货地址
+    .order-address
+      %form{:role => "form"}
+        .form-group
+          %label{:for => "examplename"} 联系姓名：
+          %input#examplename.input-default{:type => "text"}
+        .form-group
+          %label{:for => "examplePhoneNumber"} 联系电话：
+          %input#examplePhoneNumber.input-default{:type => "tel"}
+        .form-group
+          %label{:for => "exampleAddress"} 送餐地址：
+          %input#exampleAddress.input-default{:type => "text"}
+        .form-group
+          %label{:for => "exampleRemark"} 订单备注：
+          %input#exampleRemark.input-default{:placeholder => "如：不要放辣椒，速度快些。饿屎了", :type => "text"}
+  .order-submit.form-group
+    %input.btn.btn-default.w100{:type => "submit", :value => "提交订单"}

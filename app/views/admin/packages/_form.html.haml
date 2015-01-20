@@ -1,0 +1,11 @@
+- resource.package_items.new if resource.new_record?
+= simple_nested_form_for resource, url: url, html: { class: 'form-horizontal company-form' }, multipart: true, defaults: { input_html: { class: 'form-control' } } do |f|
+  = f.input :name, autofoces: true
+  = f.input :group_purchase
+  = f.input :description, as: :text, input_html: { rows: 10 }
+  = f.simple_fields_for :package_items
+  = f.link_to_add t('.add_more'), :package_items, class: 'btn btn-mini btn-primary'
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary pull-right'
+
+

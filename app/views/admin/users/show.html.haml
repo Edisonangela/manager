@@ -1,0 +1,21 @@
+%section.panel.panel-default
+  %header.panel-heading.font-bold
+    所有地址
+  %table.table.m-b-none.text-sm.table-bordered
+    %thead
+      %tr
+        %th 姓名(邮箱)
+        %th= Address.human_attribute_name(:contact_name)
+        %th= Address.human_attribute_name(:contact_phone)
+        %th= Address.human_attribute_name(:body)
+    %tbody
+      - addresses = resource.addresses
+      - addresses.each_with_index do |address, index|
+        %tr 
+          - if index == 0
+            %td{rowspan: addresses.count}
+              %p= resource.email
+              %p= resource.name
+          %td= address.contact_name
+          %td= address.contact_phone
+          %td= address.body
